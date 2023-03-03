@@ -67,6 +67,32 @@ while (userInput !== `CLOSE`){
     alert(`"${newTask}" has been added!`);
   }
 
+  // Checks if user entered REMOVE (???)
+  if (userInput === `REMOVE`){
+
+    // Concatenates each task/item in the tasks array to the showTasks String variable. Also, sets/displays a number for each task.
+    for (i = 0; i < tasks.length; i++){
+
+      // Adding 1 to i (AKA The index) so the numbers will start displaying at 1. Also, using \n to create a new line (AKA Line break)
+      showTasks += `${i + 1}: ${tasks[i]}\n`;
+    }
+
+    // Prompts the user to enter a number and stores their response to the num variable
+    // Using \n to create a new line (AKA Line Break)
+    // Subtracting 1 from the user's entry to that it matches the index of the item that user wants to remove from the tasks array
+    // Just like ParseInt, JavaScript will attempt to convert a String into a Number when you try to Subtract from it. So ParseInt is NOT necessary here.
+    num = prompt(`Please enter a number to remove:\n${showTasks}`) - 1;
+
+    // Removes the task/item selected by the user from the tasks array. Also, set the task/item that was removed to the REMOVED variable (NOTE: Splice returns the value(s) that is removed as an item(s) in an array)
+    removed = tasks.splice(num , 1);
+
+    // Alerts user with the task/item that has been removed (NOTE: Using index on the REMOVED variable here because splice returns the value that is removed as an item in an array)
+    alert(`${removed[0]} has been removed`);
+
+    // Sets the value of the showTasks String variable back to an empty String
+    showTasks = ``;
+  }
+
   // Displays the menu again
   // ???
   userInput = prompt(menu);
